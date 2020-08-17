@@ -66,6 +66,9 @@ class RenderMatrix {
     const lineWidth = 6;
     console.log(multp)
 
+    // ctx.font = "38px Arial"
+    // ctx.fillText('Esta es la figura', multp[0][1] - 150, multp[1][1] - 150);
+
     ctx.beginPath();
     ctx.strokeStyle = "cyan";
     ctx.lineWidth = lineWidth
@@ -101,10 +104,13 @@ class RenderMatrix {
     let multp = this.multiply(a, b);
     console.log(multp)
     const razon = 2;
+    ctx.font = "38px Arial"
+    ctx.fillText('Homotecia', (this.centerHomothecy[0] / 4) - 200,
+    this.centerHomothecy[1] / 2);
+    ctx.beginPath();
 
     for (let i = 0; i <= multp.length; i++) {
       if (multp[i + 1] !== undefined) {
-        ctx.beginPath();
         for (let j = 0; j <= multp[i][i]; j++) {
           if (
             multp[i][j] !== undefined &&
@@ -130,7 +136,7 @@ class RenderMatrix {
       }
     }
     ctx.stroke(); // Crea un rellleno
-    ctx.closePath(); // Crea un rellleno
+    ctx.closePath(); // Cierra el lienzo
     ctx.beginPath();
   }
 
@@ -157,6 +163,28 @@ class RenderMatrix {
     return m;
   }
 }
+
+
+function getData(formData) {
+  const col1 = Number(formData.get("col1"));
+  const col2 = Number(formData.get("col2"));
+  const row1 = Number(formData.get("row1"));
+  const row2 = Number(formData.get("row2"));
+  if (col1 + col2 + col2 + row2 === 0) {
+    alert("Lo siento hay una matriz nula");
+  } else {
+    const matrix = new Array([col1, row1], [col2, row2]);
+    validateMatrix = new VerifyMatrix().verifyColAndRow(matrix[0], matrix[1]);
+    console.log(validateMatrix)
+    if(!validateMatrix) {
+      alert("No se puede multiplicar la matriz");
+      console.log(matrix);
+    } else {
+      alert(matrix);
+    }
+  }
+}
+
 
 $formLine.addEventListener("submit", (e) => {
   e.preventDefault();
