@@ -59,53 +59,48 @@ class RenderMatrix {
 
   lineWidth = 6;
 
-  constMultp = 10
+  constMultp = 10;
 
   render(a, b, ctx) {
     let multp = this.multiply(a, b);
     const lineWidth = 6;
+    console.log(multp)
 
     ctx.beginPath();
-    for (let i = 0; i <= multp.length; i++) {
-      debugger
+    ctx.strokeStyle = "cyan";
+    ctx.lineWidth = lineWidth
+    ctx.fillStyle = "#09f";
+    for (let i = 0; i <= multp.length - 1; i++) {
       if (multp[i + 1] !== undefined) {
-        ctx.strokeStyle = "cyan";
-        ctx.lineWidth = lineWidth;
-        for (let j = 0; j <= multp[i][i]; j++) {
+        for (let j = 0; j <= multp[i].length; j++) {
           if (
             multp[i][j] !== undefined &&
-            multp[i + 1][j] !== undefined &&
-            multp[i][j + 1] !== undefined &&
-            multp[i + 1][j + 1] !== undefined
+            multp[i + 1][j] !== undefined
           ) {
-            // ctx.moveTo(
-            //   this.centerHomothecy[0] / 2,
-            //   this.centerHomothecy[1] / 2
-            // );
-            ctx.lineTo(multp[i][j] * this.constMultp, multp[i + 1][j] * this.constMultp);
-            console.log([i][j] * this.constMultp)
+            // debugger
+            console.log(multp[i][j])
+            console.log(multp[i+1][j])
+            // console.log(multp[i][j+1])
+            // console.log(multp[i+1][j+1])
             ctx.lineTo(
-              multp[i][j + 1] * this.constMultp,
-              multp[i + 1][j + 1] * this.constMultp
+              multp[i][j] * this.constMultp,
+              multp[i + 1][j] * this.constMultp
             );
-          } else {
-            alert("Se ha producido un error")
+            // console.log([i][j] * this.constMultp);
           }
         }
-      } else {
-        alert("error")
       }
     }
-    ctx.closePath(); // Crea un rellleno
     ctx.fill()
+    ctx.closePath(); // Crea un rellleno
     ctx.stroke();
     ctx.beginPath();
   }
 
   renderHomothecy(a, b, ctx) {
     let multp = this.multiply(a, b);
+    console.log(multp)
     const razon = 2;
-
 
     for (let i = 0; i <= multp.length; i++) {
       if (multp[i + 1] !== undefined) {
@@ -113,9 +108,7 @@ class RenderMatrix {
         for (let j = 0; j <= multp[i][i]; j++) {
           if (
             multp[i][j] !== undefined &&
-            multp[i + 1][j] !== undefined &&
-            multp[i][j + 1] !== undefined &&
-            multp[i + 1][j + 1] !== undefined
+            multp[i + 1][j] !== undefined
           ) {
             ctx.strokeStyle = "red";
             ctx.lineWidth = this.lineWidth;
@@ -124,17 +117,21 @@ class RenderMatrix {
               this.centerHomothecy[0] / 4,
               this.centerHomothecy[1] / 2
             );
-            ctx.lineTo(multp[i][j] * this.constMultp, multp[i + 1][j] * this.constMultp);
+            ctx.lineTo(
+              multp[i][j] * this.constMultp,
+              multp[i + 1][j] * this.constMultp
+            );
             ctx.lineTo(
               multp[i][j + 1] * this.constMultp,
               multp[i + 1][j + 1] * this.constMultp
             );
-            ctx.stroke(); // Crea un rellleno
-            ctx.beginPath();
           }
         }
       }
     }
+    ctx.stroke(); // Crea un rellleno
+    ctx.closePath(); // Crea un rellleno
+    ctx.beginPath();
   }
 
   multiply(a, b) {
@@ -183,20 +180,21 @@ function renderMatrix() {
   //   ];
 
   let a = [
-    [5, 3, -4, -2],
-    [8, -1, 0, -3],
-  ],
+      [5, 3, 4, 8, 4],
+      [8, 1, 0, 3, 4],
+    ],
     b = [
       [1, 4, 0],
-      [-5, 3, 7],
-      [0, -9, 5],
+      [5, 3, 7],
+      [0, 9, 5],
       [5, 1, 4],
+      [5, 6, 5],
     ];
   // Verifica que la matriz se puede resolver
   if (new VerifyMatrix().verify(a, b)) {
     const ctx = canvas.getContext("2d");
     new RenderMatrix().render(a, b, ctx);
-    // new RenderMatrix().renderHomothecy(a,b, ctx)
+    new RenderMatrix().renderHomothecy(a,b, ctx)
   } else {
     alert("No :/");
   }
