@@ -1,36 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Render matrix</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
     <style>
-        canvas {
-            /* width: 100%;
+      canvas {
+        /* width: 100%;
             height: 95vh; */
-            border: 1px solid #000;
-        }
+        border: 5px solid #fff;
+      }
     </style>
-</head>
-<body>
-    <h2>Este es un ejemplo para Enrique</h2>
-    <canvas id="canvas" width="500" height="500"></canvas>
+  </head>
+  <body>
+    <div id="app">
+      <header class="header-site">
+        <div>
+          <h2>Enrique</h2>
+          <i class="material-icons">menu</i>
+        </div>
+      </header>
+      <form id="formLine" class="formLine">
+        <div class="col-s2">
+          <label for="colMatrix">Columnas de la primera matriz</label>
+          <input
+            type="number"
+            name="col1"
+            min="1"
+            id="colMatrix"
+            placeholder="Ingrese las columnas de la primera matriz"
+          />
+          <input
+            type="number"
+            name="row1"
+            placeholder="Ingrese las filas de la primera matriz"
+          />
+        </div>
+        <div class="col-s2">
+          <label for="colMatrix">Columnas de la primera matriz</label>
+          <input
+            type="number"
+            name="col2"
+            min="1"
+            id="colMatrix"
+            placeholder="Ingrese las columnas de la primera matriz"
+          />
+          <input
+            type="number"
+            name="row2"
+            placeholder="Ingrese las filas de la primera matriz"
+          />
+        </div>
+        <button>Enviar</button>
+      </form>
+      <div class="container-canvas">
+        <canvas id="canvas" width="500" height="500"></canvas>
+      </div>
+    </div>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r119/three.min.js"></script> -->
-    <script>
-        const canvas = document.getElementById("canvas")
-        const ctx = canvas.getContext("2d")
-        function renderMatrix() {
-            const height = canvas.height
-            const width = canvas.width
-            console.log(canvas.width, canvas.height)
-            ctx.fillStyle = "#000"
-            ctx.strokeRect(width / 4 , height / 4, width / 2, height / 2)
-            debugger
-            // ctx.strokeRect(150, 200, 10, 100)
-        }
-
-        renderMatrix()
-    </script>
+    <script src="index2.js"></script>
     <!-- <script>
         			var scene = new THREE.Scene();
 			var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
@@ -57,5 +90,5 @@
 
 			animate();
     </script> -->
-</body>
+  </body>
 </html>
