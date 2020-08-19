@@ -2,6 +2,8 @@ const canvas = document.getElementById("canvas");
 const $formLine = document.getElementById("formLine");
 const app = document.getElementById("app");
 
+"use strict"
+
 class VerifyMatrix {
   // Verifica que el número de columnas no se ha diferente
   verifyMatrixLength(firstMatrix, secondaryMatrix) {
@@ -39,7 +41,7 @@ class VerifyMatrix {
       return true;
     } else {
       document.location =
-        "https://media.giphy.com/media/3o85xsGXVuYh8lM3EQ/giphy.gif";
+        "https://facebook.com";
     }
   }
 
@@ -213,9 +215,9 @@ function renderMatrix() {
     ],
     b = [
       [1, 4, 0],
-      [5, 3, 7],
+      [5, 5, 7],
       [0, 9, 5],
-      [5, 1, 4],
+      [5, 5, 4],
       [5, 6, 5],
     ];
   // Verifica que la matriz se puede resolver
