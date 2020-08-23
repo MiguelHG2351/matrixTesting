@@ -1,12 +1,16 @@
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto" Arial;
 }
 
  body {
   font-family: sans-serif;
   /* background: linear-gradient(to right, cyan, blue); */
   /* background-image: url(https://media1.giphy.com/media/MC6eSuC3yypCU/giphy.gif?cid=ecf05e47iyfuww7uwmgufkr5zdrvs75qt1u2efjivd4gzhcp&rid=giphy.gif); */
-  background-image: linear-gradient(to right, #0f0e0e, #201e1e);
+  /* background-image: linear-gradient(to right, #0f0e0e, #201e1e); */
+  background-image: linear-gradient(to right, #14306a, #0e2eb3);
 }
 
 label {
@@ -16,7 +20,7 @@ label {
 
 
 #app {
-    height: 100vh;
+    height: auto;
 }
 
 .header-site {
@@ -112,4 +116,39 @@ input::-webkit-details-marker {
   justify-content: center;
   align-items: center;
   margin: 150px 0;
+}
+
+
+footer { 
+  color: #fff;
+  background-color: #054b81;
+  height: auto;
+}
+
+footer h2:not(.teacher) {
+  text-align: center;
+  text-align-last: center;
+  padding: 18px;
+}
+
+.container-footer {
+  width: 95%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 35% 50% 15%;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 12px;
+}
+
+.teacher {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  text-align: center;
+}
+
+.name li {
+  list-style: none;
+  margin: 22px 0;
 }
